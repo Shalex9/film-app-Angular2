@@ -1,0 +1,44 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header" data-background-color="red">
+                            <div class="tools" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between center">
+                                <!--<search [filmName]="filmName" (emitSearch)='getFilmsBySearch($event)' fxFlex="40%"></search><br>-->
+                                <div fxFlex="35%" fxLayoutAlign="center">
+                                  <button md-button [disabled]="index==1" (click)= "prev()" >Назад</button>
+                                  <button md-button [disabled]="index==max" (click)= "next()" >Вперед</button>
+                                </div>
+                                <card-view (emitCardView)='setNewCardView($event)'></card-view><br>
+                            </div>
+                    </div>
+                      
+                    <div [ngSwitch]="selectedView">
+                      <md-card *ngIf="isFilmListEmpty()">Извините, фильмы по этому запросу не найдены...</md-card>
+                      <md-grid-list *ngSwitchCase="'yCards'" cols="4" rowHeight="950px">
+                        <md-grid-tile *ngFor="let film of filmList">
+                          <film-card-y [filmId]="film.id"></film-card-y>
+                        </md-grid-tile>
+                      </md-grid-list>
+
+                      <md-grid-list *ngSwitchCase="'xCards'" cols="2" rowHeight="400px">
+                        <md-grid-tile *ngFor="let film of filmList">
+                          <film-card-x [filmId]="film.id"></film-card-x>
+                        </md-grid-tile>
+                      </md-grid-list>
+
+                      <md-grid-list *ngSwitchCase="'sketchCards'" cols="2" rowHeight="490px">
+                        <md-grid-tile *ngFor="let film of filmList">
+                          <film-card-sketch [filmId]="film.id"></film-card-sketch>
+                        </md-grid-tile>
+                      </md-grid-list>
+                    </div>
+
+                    <button md-button *ngIf="filmList[0] && !loading" (click)="addUpcomingFilms()">Еще фильмы</button>
+                    <img class='loading' *ngIf="loading" src='assets/img/loading.gif'>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

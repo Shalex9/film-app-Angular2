@@ -1,0 +1,15 @@
+<form class="example-form" fxLayout="row" fxLayoutWrap fxLayoutAlign="fleax-start center">
+  <md-input-container class="example-full-width">
+    <input mdInput placeholder="Название фильма" name="filmName" [(ngModel)]="filmName" (keyup.enter)="inputFilms()">
+    <span mdSuffix class="reset-icon" (click)="reset()"><md-icon>close</md-icon></span>
+  </md-input-container>
+
+<!--<md-autocomplete #filmNamesList="mdAutocomplete">
+   <md-option *ngFor="let filmName of filmNames" [value]="filmName" (click)="inputFilms()">
+      {{ filmName }}
+   </md-option>
+</md-autocomplete>-->
+  <!--<button md-button (click)="inputFilms()">Search</button>-->
+  <button md-button (click)="inputFilms()"><md-icon>search</md-icon> Найти</button>
+  <ng-content></ng-content>
+</form>

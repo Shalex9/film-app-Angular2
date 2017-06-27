@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <div class="sidebar" data-color='red' data-image="">
+        <sidebar-cmp></sidebar-cmp>
+        <div class="sidebar-background" style="background-image: url(../assets/img/bg-sidebar.jpg)"></div>
+    </div>
+    <div class="main-panel">
+        <navbar-cmp></navbar-cmp>
+        <dashboard-cmp></dashboard-cmp>
+        <div *ngIf="isMaps('/maps')">
+            <footer-cmp></footer-cmp>
+        </div>
+    </div>
+    <a class="arrow-up" id="topBtn" (click)="scrollTop()"><i class="material-icons">vertical_align_top</i></a>
+</div>
+

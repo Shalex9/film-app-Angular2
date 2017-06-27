@@ -1,0 +1,16 @@
+<form class="example-form" fxLayoutWrap fxLayoutAlign="flex-start center">
+  <md-input-container class="example-full-width">
+    <input mdInput placeholder="Название фильма" name="filmName" [(ngModel)]="filmName" (keyup.enter)="setServiceFilms()">
+    <span mdSuffix class="reset-icon md-white" (click)="reset()"><md-icon>close</md-icon></span>
+  </md-input-container>
+
+  <button md-button class="md-white" (click)="setServiceFilms()" routerLink="/search-film"><md-icon class="md-white">search</md-icon> Найти</button>
+  <ng-content></ng-content>
+</form>
+
+<!--<md-autocomplete #filmNamesList="mdAutocomplete">
+   <md-option *ngFor="let filmName of filmNames" [value]="filmName" (click)="inputFilms()">
+      {{ filmName }}
+   </md-option>
+</md-autocomplete>-->
+  <!--<button md-button (click)="inputFilms()">Search</button>-->

@@ -1,0 +1,43 @@
+.card .card-header.detail {
+    height: 60px;
+    /*display: flex;
+    flex-direction: row;*/
+}
+.col-md-8.film-detail-wrapper {
+    padding: 0;
+    margin-left: -15px;
+    position: relative;
+}
+.film-detail-bg {
+    position: absolute;
+    filter: brightness(120%) grayscale(1);
+    opacity: .1;
+    width: 100%;
+    height: 100%;
+    top: 60px;
+    left: 0;
+    z-index: 1;
+}
+.film-detail-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 60px;
+    left: 0;
+    z-index: 2;
+}
+/*.film-detail-content::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: block;
+    filter: brightness(120%) grayscale(1);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: bg;
+}*/

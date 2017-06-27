@@ -1,0 +1,7 @@
+<form>
+  <md-select placeholder="Image size" [(ngModel)]="selectedView" name="cardView">
+    <md-option *ngFor="let size of sizeVariants" [value]="size.value" (click)="changeCardView()">
+      {{ size.viewValue }}
+    </md-option>
+  </md-select>
+</form>

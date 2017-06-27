@@ -1,0 +1,54 @@
+<div class="main-content home-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-profile">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="">
+                                <a href="{{'https://image.tmdb.org/t/p/w320'+filmItem.poster_path}}">
+                                    <img src="{{filmItem.poster_path ? 'https://image.tmdb.org/t/p/w320'+filmItem.poster_path : '../assets/img/no-image.jpg'}}" alt="{{filmItem.title ? filmItem.title : 'Нет данных'}}">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-8 film-detail-wrapper">                           
+                            <div class="card-header detail" data-background-color="red" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between center">
+                                <h4 class="title" fxFlex="80%">{{filmItem.title ? filmItem.title : 'Нет данных'}}</h4>
+                                <a href="#shalex" data-toggle="dropdown" (click)="clickFavoriteItem()">
+                                    <i class="material-icons md-white" fxFlex="20%">turned_in</i>
+                                </a>
+                            </div>
+                            <div class="film-detail-bg">
+                                <img data-src="{{bg}}">
+                            </div>
+                            <div class="film-detail-content">
+                                <h3 class="card-title">{{filmItem.tagline ? filmItem.tagline : ""}}</h3>
+                                <p class="card-content">
+                                    {{filmItem.overview ? filmItem.overview : "Описание фильма отсутсвует"}}
+                                </p>
+                                <!--<h3>{{filmItem.production_countries ? country : "No country"}}</h3>
+                                <h3>{{filmItem.production_companies ? company : "No company"}}</h3>-->
+                            </div>
+                            <!--<a href="http://shalex.info/ru/" class="btn btn-danger btn-round">Перейти на мой сайт</a>-->                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--[ngStyle]="{'background-image': bg}" -->
+            <!--[style.background]='"https://image.tmdb.org/t/p/w500" + this.filmItem.backdrop_path'-->
+            <!--<div class="col-md-8 col-md-offset-2">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">Детальнее об этом проэкте</h4>
+                    </div>
+                    <div class="card-content">
+                        <h2>Это мой тестовый проэкт на фреймворке Angular2</h2>
+                        <p>Здесь Вы можете найти нужные Вам фильмы с помощью поиска или по категориям. 
+                            Кликнув по найденному фильму Вы нйдете детальную информацию о нем</p> 
+                        <p>Данные получаются динамически по API с сервиса <a href="https://www.themoviedb.org">The Movie DB</a></p>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
