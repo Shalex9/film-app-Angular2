@@ -34,6 +34,7 @@ export class FavoritesComponent implements OnInit {
     this.loading = true;
     this.filmCardService.getFavoritesItem().subscribe(data => {
       this.filmFavoritesList = data;
+      console.log("Get This Film in Favorites = ", data);
       for(let filmFavoriteItem of this.filmFavoritesList) {
         this.filmItem = filmFavoriteItem.jsonFilm;
         // console.log("filmItem of this.filmList Favorites.TS", this.filmItem);

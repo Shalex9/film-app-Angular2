@@ -13,6 +13,7 @@ var express = require('express'),
 
 router.get('/getFavoritesList', favoritesController.getFavoritesList);
 router.post('/saveFavoriteItem', favoritesController.saveFavoriteItem);
+router.delete('/deleteFavoriteItem', favoritesController.deleteFavoriteItem);
 
 
 module.exports = router;

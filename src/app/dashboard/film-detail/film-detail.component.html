@@ -14,8 +14,11 @@
                         <div class="col-md-8 film-detail-wrapper">                           
                             <div class="card-header detail" data-background-color="red" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between center">
                                 <h4 class="title" fxFlex="80%">{{filmItem.title ? filmItem.title : 'Нет данных'}}</h4>
-                                <a href="#shalex" data-toggle="dropdown" (click)="clickFavoriteItem()">
-                                    <i class="material-icons md-white" fxFlex="20%">turned_in</i>
+                                <a href="#shalex" class="set-favorite-false" data-toggle="dropdown" (click)="clickFavoriteItem()">
+                                    <i class="material-icons md-white" fxFlex="10%">turned_in_not</i>
+                                </a>
+                                <a href="#shalex" data-toggle="dropdown" (click)="removeFavoriteItem()">
+                                    <i class="material-icons md-white" fxFlex="10%">turned_in</i>
                                 </a>
                             </div>
                             <div class="film-detail-bg">

@@ -17,6 +17,7 @@ export class FilmService {
   filmItem: object
   data: any;
   currentFilmId: string
+  favorite: any
   
   constructor(private http: Http) { }
 
@@ -34,14 +35,20 @@ export class FilmService {
   getFavoritesItem () {
     return this.http.get("http://localhost:4200/getFavoritesList").map(this.extractGalleryData);
   }
-//MongoDB
   saveFavoriteItem (filmItem) {
       // console.log('title in service =', title);
       this.filmItem = filmItem;
-      // console.log('filmItem in service =', filmItem);
-      let favorite = {jsonFilm: filmItem};
-      // console.log('favorite service =', favorite);
-      return this.http.post("http://localhost:4200/saveFavoriteItem", favorite).map(this.extractGalleryData);
+      console.log('filmItem in service Save =', filmItem);
+      this.favorite = {jsonFilm: filmItem};
+      console.log('favorite service Save=', this.favorite);
+      return this.http.post("http://localhost:4200/saveFavoriteItem", this.favorite).map(this.extractGalleryData);
+  }
+  deleteFavoriteItem (filmItem) {
+      // this.filmItem = filmItem;
+      // console.log('filmItem in service Delete =', filmItem);
+      this.favorite = {jsonFilm: filmItem};
+      // console.log('favorite service Delete =', this.favorite);
+      return this.http.delete("http://localhost:4200/deleteFavoriteItem", this.favorite).map(this.extractGalleryData);
   }
 
   getFilmById (filmId: string) {

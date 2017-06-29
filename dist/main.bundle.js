@@ -142,7 +142,7 @@ var PopularFilmsComponent = (function () {
         this.loading = true;
         this.filmCardService.getPopularFilms().subscribe(function (data) {
             _this.filmList = data;
-            console.log("dataLIST Popular.TS", data);
+            // console.log("dataLIST Popular.TS", data)
             _this.loading = false;
         });
     };
@@ -1890,7 +1890,7 @@ module.exports = "<md-card class=\"film-card\">\n\t<a routerLink=\"/film-detail\
 /***/ 248:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content home-page\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card card-profile\">\n                    <div class=\"row\">\n                        <div class=\"col-md-4\">\n                            <div class=\"\">\n                                <a href=\"{{'https://image.tmdb.org/t/p/w320'+filmItem.poster_path}}\">\n                                    <img src=\"{{filmItem.poster_path ? 'https://image.tmdb.org/t/p/w320'+filmItem.poster_path : '../assets/img/no-image.jpg'}}\" alt=\"{{filmItem.title ? filmItem.title : 'Нет данных'}}\">\n                                </a>\n                            </div>\n                        </div>\n                        <div class=\"col-md-8 film-detail-wrapper\">                           \n                            <div class=\"card-header detail\" data-background-color=\"red\" fxLayout=\"row\" fxLayoutWrap fxLayoutAlign=\"space-between center\">\n                                <h4 class=\"title\" fxFlex=\"80%\">{{filmItem.title ? filmItem.title : 'Нет данных'}}</h4>\n                                <a href=\"#shalex\" data-toggle=\"dropdown\" (click)=\"clickFavoriteItem()\">\n                                    <i class=\"material-icons md-white\" fxFlex=\"20%\">turned_in</i>\n                                </a>\n                            </div>\n                            <div class=\"film-detail-bg\">\n                                <img data-src=\"{{bg}}\">\n                            </div>\n                            <div class=\"film-detail-content\">\n                                <h3 class=\"card-title\">{{filmItem.tagline ? filmItem.tagline : \"\"}}</h3>\n                                <p class=\"card-content\">\n                                    {{filmItem.overview ? filmItem.overview : \"Описание фильма отсутсвует\"}}\n                                </p>\n                                <!--<h3>{{filmItem.production_countries ? country : \"No country\"}}</h3>\n                                <h3>{{filmItem.production_companies ? company : \"No company\"}}</h3>-->\n                            </div>\n                            <!--<a href=\"http://shalex.info/ru/\" class=\"btn btn-danger btn-round\">Перейти на мой сайт</a>-->                        \n                        </div>\n                    </div>\n                </div>\n            </div>\n            <!--[ngStyle]=\"{'background-image': bg}\" -->\n            <!--[style.background]='\"https://image.tmdb.org/t/p/w500\" + this.filmItem.backdrop_path'-->\n            <!--<div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"card\">\n                    <div class=\"card-header\" data-background-color=\"red\">\n                        <h4 class=\"title\">Детальнее об этом проэкте</h4>\n                    </div>\n                    <div class=\"card-content\">\n                        <h2>Это мой тестовый проэкт на фреймворке Angular2</h2>\n                        <p>Здесь Вы можете найти нужные Вам фильмы с помощью поиска или по категориям. \n                            Кликнув по найденному фильму Вы нйдете детальную информацию о нем</p> \n                        <p>Данные получаются динамически по API с сервиса <a href=\"https://www.themoviedb.org\">The Movie DB</a></p>\n                    </div>\n                </div>\n            </div>-->\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"main-content home-page\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card card-profile\">\n                    <div class=\"row\">\n                        <div class=\"col-md-4\">\n                            <div class=\"\">\n                                <a href=\"{{'https://image.tmdb.org/t/p/w320'+filmItem.poster_path}}\">\n                                    <img src=\"{{filmItem.poster_path ? 'https://image.tmdb.org/t/p/w320'+filmItem.poster_path : '../assets/img/no-image.jpg'}}\" alt=\"{{filmItem.title ? filmItem.title : 'Нет данных'}}\">\n                                </a>\n                            </div>\n                        </div>\n                        <div class=\"col-md-8 film-detail-wrapper\">                           \n                            <div class=\"card-header detail\" data-background-color=\"red\" fxLayout=\"row\" fxLayoutWrap fxLayoutAlign=\"space-between center\">\n                                <h4 class=\"title\" fxFlex=\"80%\">{{filmItem.title ? filmItem.title : 'Нет данных'}}</h4>\n                                <a href=\"#shalex\" class=\"set-favorite-false\" data-toggle=\"dropdown\" (click)=\"clickFavoriteItem()\">\n                                    <i class=\"material-icons md-white\" fxFlex=\"10%\">turned_in_not</i>\n                                </a>\n                                <a href=\"#shalex\" data-toggle=\"dropdown\" (click)=\"removeFavoriteItem()\">\n                                    <i class=\"material-icons md-white\" fxFlex=\"10%\">turned_in</i>\n                                </a>\n                            </div>\n                            <div class=\"film-detail-bg\">\n                                <img data-src=\"{{bg}}\">\n                            </div>\n                            <div class=\"film-detail-content\">\n                                <h3 class=\"card-title\">{{filmItem.tagline ? filmItem.tagline : \"\"}}</h3>\n                                <p class=\"card-content\">\n                                    {{filmItem.overview ? filmItem.overview : \"Описание фильма отсутсвует\"}}\n                                </p>\n                                <!--<h3>{{filmItem.production_countries ? country : \"No country\"}}</h3>\n                                <h3>{{filmItem.production_companies ? company : \"No company\"}}</h3>-->\n                            </div>\n                            <!--<a href=\"http://shalex.info/ru/\" class=\"btn btn-danger btn-round\">Перейти на мой сайт</a>-->                        \n                        </div>\n                    </div>\n                </div>\n            </div>\n            <!--[ngStyle]=\"{'background-image': bg}\" -->\n            <!--[style.background]='\"https://image.tmdb.org/t/p/w500\" + this.filmItem.backdrop_path'-->\n            <!--<div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"card\">\n                    <div class=\"card-header\" data-background-color=\"red\">\n                        <h4 class=\"title\">Детальнее об этом проэкте</h4>\n                    </div>\n                    <div class=\"card-content\">\n                        <h2>Это мой тестовый проэкт на фреймворке Angular2</h2>\n                        <p>Здесь Вы можете найти нужные Вам фильмы с помощью поиска или по категориям. \n                            Кликнув по найденному фильму Вы нйдете детальную информацию о нем</p> \n                        <p>Данные получаются динамически по API с сервиса <a href=\"https://www.themoviedb.org\">The Movie DB</a></p>\n                    </div>\n                </div>\n            </div>-->\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -2023,14 +2023,20 @@ var FilmService = (function () {
     FilmService.prototype.getFavoritesItem = function () {
         return this.http.get("http://localhost:4200/getFavoritesList").map(this.extractGalleryData);
     };
-    //MongoDB
     FilmService.prototype.saveFavoriteItem = function (filmItem) {
         // console.log('title in service =', title);
         this.filmItem = filmItem;
-        // console.log('filmItem in service =', filmItem);
-        var favorite = { jsonFilm: filmItem };
-        // console.log('favorite service =', favorite);
-        return this.http.post("http://localhost:4200/saveFavoriteItem", favorite).map(this.extractGalleryData);
+        console.log('filmItem in service Save =', filmItem);
+        this.favorite = { jsonFilm: filmItem };
+        console.log('favorite service Save=', this.favorite);
+        return this.http.post("http://localhost:4200/saveFavoriteItem", this.favorite).map(this.extractGalleryData);
+    };
+    FilmService.prototype.deleteFavoriteItem = function (filmItem) {
+        // this.filmItem = filmItem;
+        // console.log('filmItem in service Delete =', filmItem);
+        this.favorite = { jsonFilm: filmItem };
+        // console.log('favorite service Delete =', this.favorite);
+        return this.http.delete("http://localhost:4200/deleteFavoriteItem", this.favorite).map(this.extractGalleryData);
     };
     FilmService.prototype.getFilmById = function (filmId) {
         return this.http.get(this.movieUrl + filmId + this.apiKey + this.language).map(this.extractListData);
@@ -2147,6 +2153,7 @@ var FavoritesComponent = (function () {
         this.loading = true;
         this.filmCardService.getFavoritesItem().subscribe(function (data) {
             _this.filmFavoritesList = data;
+            console.log("Get This Film in Favorites = ", data);
             for (var _i = 0, _a = _this.filmFavoritesList; _i < _a.length; _i++) {
                 var filmFavoriteItem = _a[_i];
                 _this.filmItem = filmFavoriteItem.jsonFilm;
@@ -2209,16 +2216,34 @@ var FilmDetailComponent = (function () {
         var _this = this;
         this.filmCardService.returnFilmId(this.filmId).subscribe(function (data) {
             _this.filmItem = data;
+            console.log("filmItem in film-detail", _this.filmItem);
+            // this.dbId = this.filmItem.
             _this.URLjson = "https://api.themoviedb.org/3/movie/" + _this.filmItem.id + "?api_key=e0f7e1b6f264b1d5cb04ea6cc4216ade&language=ru-RU";
             console.log('URL к json-файлу с исходными данними о фильме: ', _this.URLjson);
             // console.log('production_countries: ', this.production_countries);
         });
+        // $(".set-favorite-false").click(this.clickFavoriteItem());
+        // $(".set-favorite-false.true").click(this.deleteFavoriteItem());
     };
     //MongoDB 
     FilmDetailComponent.prototype.clickFavoriteItem = function () {
-        this.filmCardService.saveFavoriteItem(this.filmItem).subscribe(function (data) {
-            console.log("Saved to Favorites = ", data);
+        // this.filmCardService.saveFavoriteItem(this.filmItem).subscribe(data => {
+        //     console.log("Saved This Film to Favorites = ", data);
+        // })
+        $(".set-favorite-false").toggleClass("true");
+        $(".set-favorite-false").hasClass("true") ? $(".set-favorite-false.true").children("i").html("turned_in") : $(".set-favorite-false").children("i").html("turned_in_not");
+        // if($(".set-favorite-false")){
+        //   $(".set-favorite-false").click(this.clickFavoriteItem())
+        // }
+        $(".set-favorite-false").hasClass("true") ? $(".set-favorite-false.true").click(this.filmCardService.saveFavoriteItem(this.filmItem).subscribe(function (data) {
+            console.log("Saved This Film to Favorites = ", data);
+        })) : $(".set-favorite-false").click(this.removeFavoriteItem());
+    };
+    FilmDetailComponent.prototype.removeFavoriteItem = function () {
+        this.filmCardService.deleteFavoriteItem(this.filmItem).subscribe(function (data) {
+            console.log("Deleted This Film into Favorites = ", data);
         });
+        console.log("will be delete");
     };
     return FilmDetailComponent;
 }());
