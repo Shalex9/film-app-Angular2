@@ -18,9 +18,6 @@ var item;
             },
             saveFavoriteItem: function(req, res) {
                 item = new FavoriteItemModel(req.body);
-                // console.log(req.body);
-                // console.log(item);
-                /* return res.send({ status: 'OK', item: item });*/
                 item.save(function (err) {
                     if (!err) {
                         console.log("Favorites item is created");
@@ -31,7 +28,26 @@ var item;
                         log.error('Internal error(%d): %s',res.statusCode,err.message);
                     }
                 }); 
-            },            
+            },                
+            getFilmItemById: function (req, res) {
+                return FavoriteItemModel.find({ filmId: new RegExp(req.query.filmId, 'i')})
+                    .exec(function (err, filteredFilmList) {
+                        if (!err) {
+                            return res.send(filteredFilmList);
+                        } else {
+                            handleError(res, err); 
+                        }
+                    });
+            },    
+            /*
+                updateFavoriteItem: function (req, res) {
+                    //var item = new FavoriteItemModel(req.body);
+                    return FavoriteItemModel.findByIdAndUpdate(req.query.filmId, { $set: { status: req.query.status }}, { new: true }, function (err, tank) {
+                        if (err) return handleError(err);
+                            res.send(tank);
+                        });
+                },
+            */    
             deleteFavoriteItem: function(req, res){
                 // var item = new FavoriteItemModel(req.body);
                 item.remove(function (err) {

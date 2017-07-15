@@ -9,8 +9,14 @@ var FavoriteItem = new Schema({
   },
   statusFavorite: {
     type: Boolean,
-    default: true
-  }
+    default: false
+  },
+  filmId: {
+    type: String,
+    default: '',
+    trim: true,
+    required: 'Film id couldn\'t be empty'
+  },
   // id: {
   //   type: Number,
   //   default: '',

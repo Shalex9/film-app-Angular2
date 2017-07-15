@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { SearchFilter } from './shared/model'
+import { SearchFilter } from './shared/model';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class FilmService {
   movieUrl: string = "https://api.themoviedb.org/3/movie/";
+  actorsUrl: string = "https://api.themoviedb.org/3/credit/"
   searchUrl: string = "https://api.themoviedb.org/3/search/movie";
   apiKey: string = "?api_key=e0f7e1b6f264b1d5cb04ea6cc4216ade";
   language: string = "&language=ru-RU";
@@ -18,8 +20,12 @@ export class FilmService {
   data: any;
   currentFilmId: string
   favorite: any
-  
+  favoritesIdList: any
+  getfavoritesIdList: any
+
   constructor(private http: Http) { }
+
+  private subject = new Subject<string>();
 
   private extractListData(res: Response) {
     let body = res.json();
@@ -50,7 +56,17 @@ export class FilmService {
       // console.log('favorite service Delete =', this.favorite);
       return this.http.delete("http://localhost:4200/deleteFavoriteItem", this.favorite).map(this.extractGalleryData);
   }
-
+  setFavoritesIDList (favoritesIdList) {
+      this.favoritesIdList = favoritesIdList;
+      console.log("favoritesIdList", this.favoritesIdList)
+  }
+  getFavoritesIDList (favoritesIdList) {
+      this.getfavoritesIdList = this.favoritesIdList;
+      console.log("SERVICE favoritesIdList - ", this.getfavoritesIdList);
+      return this.getfavoritesIdList;
+      // return Observable.throw(this.getfavoritesIdList);
+      // return (this.getfavoritesIdList);
+  }
   getFilmById (filmId: string) {
     return this.http.get(this.movieUrl + filmId + this.apiKey + this.language).map(this.extractListData);
   }
@@ -63,6 +79,11 @@ export class FilmService {
     filmId = this.currentFilmId;
     // console.log('SET returnFilmId in Service ID', this.currentFilmId);
     return this.http.get(this.movieUrl + this.currentFilmId + this.apiKey + this.language).map(this.extractListData);
+  }
+  getActors(filmId: string) {
+    filmId = this.currentFilmId;
+    return this.http.get(this.movieUrl + filmId + "/credits" + this.apiKey)
+          .map((res: Response) => res.json().cast || []);
   }
   setSearchFilms (filmName: string) {
     this.filmName = filmName;

@@ -1,0 +1,15 @@
+md-card {
+    height: calc(100% + 20px);
+    padding: 0 !important;
+}
+.mat-card-image {
+    margin: 0;
+    width: 100%;
+}
+.mat-card-title {
+    margin-top: 15px;
+    padding: 5px 15px;
+}
+.mat-card-content {
+    padding: 5px 15px;
+}

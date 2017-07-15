@@ -17,12 +17,15 @@ export class FavoritesComponent implements OnInit {
   newIndex: number;
   max: number;
   selectedView: string = "yCards";
+  filmIDList : any[] = []
+  filmIDItem : any;
 
   constructor(private filmCardService: FilmService) { }
 
   ngOnInit() {
     this.filmName = ""
     this.getFavoritesFilms();
+    // this.transferToServiceIDList();
   }
   isFilmListEmpty(): boolean {
     return this.filmList && !this.filmList.length;
@@ -34,16 +37,26 @@ export class FavoritesComponent implements OnInit {
     this.loading = true;
     this.filmCardService.getFavoritesItem().subscribe(data => {
       this.filmFavoritesList = data;
-      console.log("Get This Film in Favorites = ", data);
+      // console.log("Get This Film in Favorites = ", data);
       for(let filmFavoriteItem of this.filmFavoritesList) {
         this.filmItem = filmFavoriteItem.jsonFilm;
         // console.log("filmItem of this.filmList Favorites.TS", this.filmItem);
         this.filmList = [...this.filmList, ...this.filmItem];
         // console.log("Favorites filmList", this.filmList);
+        this.filmIDItem = filmFavoriteItem.jsonFilm.id;
+        // console.log("filmIDItem of filmList Favorites.TS", this.filmIDItem);
+        this.filmIDList = [...this.filmIDList, ...this.filmIDItem];
+        console.log("Favorites filmIDList", this.filmIDList);
       }
+      this.filmCardService.setFavoritesIDList(this.filmIDList);
       this.loading = false;
     })
-  } 
+  }
+  // transferToServiceIDList(){
+  //   this.filmIDList = [...this.filmIDList, ...this.filmIDItem];
+  //   console.log("Favorites filmIDList", this.filmIDList);
+  //   this.filmCardService.getFavoritesIDList(this.filmIDList);
+  // } 
   getFilmsBySearch(filmName: string){
     this.filmName = filmName;
     this.loading = true;

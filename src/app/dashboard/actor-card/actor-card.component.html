@@ -1,0 +1,7 @@
+<md-card>
+  <img *ngIf="actor.profile_path" md-card-image src="{{actor.profile_path ? 'https://image.tmdb.org/t/p/w320'+actor.profile_path : '../assets/img/no-image.jpg'}}">	
+  <md-card-title>{{actor.name}}</md-card-title>
+  <md-card-content>
+    <span>{{actor.character || actor.job}}</span>
+  </md-card-content>
+</md-card>

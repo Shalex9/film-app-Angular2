@@ -22,6 +22,7 @@ import { FilmCardSketchComponent } from './film-card-sketch/film-card-sketch.com
 import { CardViewComponent } from './card-view/card-view.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { ActorCardComponent } from './actor-card/actor-card.component';
 
 @NgModule({
     imports: [
@@ -48,7 +49,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
         FilmCardSketchComponent,
         CardViewComponent,
         FilmDetailComponent,
-        FavoritesComponent 
+        FavoritesComponent,
+        ActorCardComponent 
     ],
     providers: [ FilmService ]
 })
